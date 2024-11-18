@@ -19,19 +19,25 @@ function useImageProcessor(imageFile) {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
 
-      canvas.width = 50;
-      canvas.height = 50;
+      // Adjust the canvas size to match the image aspect ratio
+      const imgWidth = img.width;
+      const imgHeight = img.height;
+      const canvasSize = 50; // Adjust as needed
+      const aspectRatio = imgWidth / imgHeight;
 
-      context.drawImage(img, 0, 0, 50, 50);
+      canvas.width = canvasSize;
+      canvas.height = canvasSize / aspectRatio;
 
-      const imgData = context.getImageData(0, 0, 50, 50).data;
+      context.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      const imgData = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
       const pixelData = [];
 
-      for (let y = 0; y < 50; y++) {
+      for (let y = 0; y < canvas.height; y++) {
         const row = [];
-        for (let x = 0; x < 50; x++) {
-          const index = (y * 50 + x) * 4;
+        for (let x = 0; x < canvas.width; x++) {
+          const index = (y * canvas.width + x) * 4;
           const r = imgData[index];
           const g = imgData[index + 1];
           const b = imgData[index + 2];

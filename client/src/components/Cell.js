@@ -3,11 +3,15 @@
 import React from 'react';
 import './Cell.css';
 
-function Cell({ isAlive, color }) {
+function Cell({ isAlive, color, size }) {
   return (
     <div
       className="cell"
-      style={{ backgroundColor: isAlive ? color : '#000' }}
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundColor: isAlive ? color : '#000',
+      }}
     />
   );
 }

@@ -1,18 +1,20 @@
 // utils/colorToPattern.js
 
 export function mapColorToPattern(color) {
-  // Simple mapping based on color brightness
+  // Map color brightness to patterns
   const rgb = color
     .replace(/[^\d,]/g, '')
     .split(',')
     .map(Number);
   const brightness = (rgb[0] + rgb[1] + rgb[2]) / 3;
 
-  if (brightness < 85) {
-    return 'block'; // Dark colors
-  } else if (brightness < 170) {
-    return 'beehive'; // Medium colors
+  if (brightness < 64) {
+    return 'block'; // Very dark colors
+  } else if (brightness < 128) {
+    return 'beehive'; // Dark colors
+  } else if (brightness < 192) {
+    return 'blinker'; // Medium colors
   } else {
-    return 'blinker'; // Light colors
+    return 'glider'; // Light colors
   }
 }
