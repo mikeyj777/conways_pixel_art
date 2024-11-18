@@ -1,0 +1,18 @@
+src
+├── components
+│   ├── Cell.js
+│   ├── Cell.css
+│   ├── Grid.js
+│   ├── Controls.js
+│   ├── ImageUpload.js
+│   ├── ImageProcessor.js
+├── pages
+│   ├── Home.js
+│   ├── Simulation.js
+│   ├── About.js
+├── utils
+│   ├── patterns.js
+│   ├── colorToPattern.js
+├── App.js
+├── index.js
+├── index.css

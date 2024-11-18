@@ -1,0 +1,8 @@
+/* components/Cell.css */
+
+.cell {
+  width: 12px; /* Adjusted for better visibility */
+  height: 12px;
+  border: 1px solid #111;
+  box-sizing: border-box;
+}
