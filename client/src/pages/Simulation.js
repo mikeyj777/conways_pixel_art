@@ -5,8 +5,8 @@ import Grid from '../components/Grid';
 import { Link } from 'react-router-dom';
 import useImageProcessor from '../components/ImageProcessor';
 
-function Simulation({ imageFile }) {
-  const imageData = useImageProcessor(imageFile);
+function Simulation({ imageFile, settings }) {
+  const imageData = useImageProcessor(imageFile, settings.gridSize);
 
   if (!imageFile) {
     return (
@@ -22,7 +22,7 @@ function Simulation({ imageFile }) {
   return (
     <div className="page">
       <h1>Simulation</h1>
-      <Grid imageData={imageData} />
+      <Grid imageData={imageData} settings={settings} />
       <Link to="/">
         <button>Back to Home</button>
       </Link>

@@ -8,12 +8,24 @@ import About from './pages/About';
 
 function App() {
   const [imageFile, setImageFile] = useState(null);
+  const [settings, setSettings] = useState({
+    gridSize: 50,      // Default grid size (number of SPGCOLs per side)
+    spgcolSize: 5,     // Default SPGCOL size (number of cells per side)
+    cellSize: 4,       // Default cell size (pixels)
+    simSpeed: 500,     // Default simulation speed (ms)
+  });
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home setImageFile={setImageFile} />} />
-        <Route path="/simulation" element={<Simulation imageFile={imageFile} />} />
+        <Route
+          path="/"
+          element={<Home setImageFile={setImageFile} settings={settings} setSettings={setSettings} />}
+        />
+        <Route
+          path="/simulation"
+          element={<Simulation imageFile={imageFile} settings={settings} />}
+        />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

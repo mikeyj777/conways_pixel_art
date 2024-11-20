@@ -34,3 +34,25 @@ a {
 h1 {
   margin-top: 0;
 }
+
+/* index.css */
+
+.settings {
+  margin: 20px 0;
+}
+
+.settings div {
+  margin: 10px 0;
+}
+
+.settings label {
+  display: inline-block;
+  width: 250px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.settings input {
+  width: 60px;
+}
+

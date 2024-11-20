@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-function useImageProcessor(imageFile) {
+function useImageProcessor(imageFile, gridSize) {
   const [imageData, setImageData] = useState([]);
 
   useEffect(() => {
@@ -19,15 +19,11 @@ function useImageProcessor(imageFile) {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
 
-      // Adjust the canvas size to match the image aspect ratio
-      const imgWidth = img.width;
-      const imgHeight = img.height;
-      const canvasSize = 50; // Adjust as needed
-      const aspectRatio = imgWidth / imgHeight;
+      // Set canvas dimensions based on gridSize
+      canvas.width = gridSize;
+      canvas.height = gridSize;
 
-      canvas.width = canvasSize;
-      canvas.height = canvasSize / aspectRatio;
-
+      // Draw the image scaled to the canvas size
       context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       const imgData = context.getImageData(0, 0, canvas.width, canvas.height).data;
@@ -51,7 +47,7 @@ function useImageProcessor(imageFile) {
     };
 
     reader.readAsDataURL(imageFile);
-  }, [imageFile]);
+  }, [imageFile, gridSize]);
 
   return imageData;
 }

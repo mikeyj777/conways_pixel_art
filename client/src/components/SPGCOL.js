@@ -5,7 +5,7 @@ import Cell from './Cell';
 import { patterns } from '../utils/patterns';
 import { mapColorToPattern } from '../utils/colorToPattern';
 
-function SPGCOL({ color, subGridSize, cellSize }) {
+function SPGCOL({ color, subGridSize, cellSize, simSpeed }) {
   const [grid, setGrid] = useState(() => initializeSubGrid());
   const [running, setRunning] = useState(true);
 
@@ -71,10 +71,10 @@ function SPGCOL({ color, subGridSize, cellSize }) {
   useEffect(() => {
     if (!running) return;
 
-    const interval = setInterval(runSimulation, 500);
+    const interval = setInterval(runSimulation, simSpeed);
 
     return () => clearInterval(interval);
-  }, [running, runSimulation]);
+  }, [running, runSimulation, simSpeed]);
 
   return (
     <div
